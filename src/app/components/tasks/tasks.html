@@ -1,0 +1,27 @@
+
+<div class='form-group'>
+  <form ng-submit="tasks.submit()">
+    <input  type="text" name="" autocomplete="off" 
+            id="input" class="form-control large" title="Insert a task here!"
+            placeholder="Type your task here and hit enter"
+            ng-model='tasks.taskInput'
+            />
+  </form>
+</div>
+
+<div  ng-repeat="task in tasks.data" class='task-item task-item-info'
+      ng-class="{completed: task.completed}">
+  <div class='callout-body'>
+    <button type="button" class="close" aria-label="Close" ng-click="tasks.remove(task.id)"><span aria-hidden="true">&times;</span></button>
+    <div class='priority-box' ng-click="tasks.changePriority(task.id)" ng-class="tasks.getPriorityClass(task.priority)">&nbsp;</div>
+    <h4>
+      <div class="">
+      <label>
+        <input type="checkbox" ng-checked='task.completed' ng-click="tasks.updateCompleted(task.id)">
+          <span class='title'>{{task.title}}</span>
+      </label>
+    </div>
+    </h4>
+    <footer>Created {{ tasks.formatCreatedDate(task.login) || tasks.formatCreatedDate(task.created_at) }}</footer>
+  </div>
+</div>
