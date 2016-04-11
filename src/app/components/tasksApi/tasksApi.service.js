@@ -7,7 +7,9 @@
 
   /** @ngInject */
   function tasksApi($resource) {
-    return $resource('http://api.todo.dev/tasks/:id', {id:'@id'},{
+    // var api_host = 'http://api.todo.dev';
+    var api_host = 'http://api.storelodge.com';
+    return $resource(api_host+'/tasks/:id', {id:'@id'},{
       'query': {method: 'GET', isArray: false },
       'update': {method: 'PUT'}
     });
