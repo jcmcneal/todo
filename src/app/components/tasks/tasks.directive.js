@@ -26,8 +26,6 @@
       tasks.data = [];
       tasks.taskInput;
 
-      tasks.relativeDate = moment(tasks.creationDate).fromNow();
-
       tasks.changePriority = function(id) {
         var priority = tasks.data[id].priority++;
         priority++;
@@ -38,7 +36,7 @@
       }
       // Format Date Since Created
       tasks.formatCreatedDate = function(date) {
-        return moment(date).fromNow();
+        return moment(date).format("dddd, MMMM D, YYYY");
       }
       tasks.getPriorityClass = function(priority) {
         return 'priority-'+priority;
